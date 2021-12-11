@@ -19,24 +19,14 @@ const viewpath = path.join(__dirname, '../templets/views')
 app.set('views', viewpath)
 
 
-
-app.get('/', (req, res) => {
-    // res.send('Hello World!')
-    // res.render('index', {
-    //     name: 'Mohamed'
-    // })
-})
 app.get('/news', (req, res) => {
     news((error, data) => {
-            if (error) {
-                res.render('index', { error })
-            } else {
-                // console.log(data );
-                res.render('index', { data })
-            }
-            // res.render('index', { data })
-        })
-        // res.render('index', { xx: 'cc' })
+        if (error) {
+            res.render('index', { error })
+        } else {
+            res.render('index', { data })
+        }
+    })
 
 })
 app.get('*', (req, res) => {
